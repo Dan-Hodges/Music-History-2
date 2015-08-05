@@ -1,0 +1,29 @@
+body {
+  padding-top: 70px; }
+
+.row-eq-height {
+  display: flex;
+  border-radius: 15px; }
+
+.col-md-3 {
+  background: #669999; }
+
+.col-md-9 {
+  background-color: #FCDAA5; }
+
+.spaceholder {
+  color: white;
+  display: block;
+  height: 0;
+  visibility: hidden; }
+
+div#sticker {
+  padding: 20px;
+  margin: 20px 0;
+  width: 190px; }
+
+.stick {
+  position: fixed;
+  top: 70px; }
+
+/*# sourceMappingURL=main.css.map */

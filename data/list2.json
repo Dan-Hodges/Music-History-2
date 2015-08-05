@@ -1,0 +1,19 @@
+{
+  "songs": [
+    {
+    "title":"Welcome to the Jungle",
+    "artist": "Guns and Roses",
+    "album": "Appetite for Destruction"
+    },
+    {
+    "title": "Bold as Love",
+    "artist": "Jimi Hendrix",
+    "album": "Axix: Bold as Love"
+    },
+    {
+    "title": "Walk On",
+    "artist": "Neil Young",
+    "album": "On the Beach"
+    }
+  ]
+}  

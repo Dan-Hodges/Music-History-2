@@ -1,0 +1,19 @@
+{
+  "songs": [
+    {
+    "title": "Legs",
+    "artist": "ZZ Top",
+    "album": "Eliminator"
+    },
+    {
+    "title": "Logical Song",
+    "artist": "Supertramp",
+    "album": "Breakfast in America"
+    },
+    {
+    "title": "Another Brick in the Wall",
+    "artist": "Pink Floyd",
+    "album": "The Wall"
+    }
+  ]  
+}  

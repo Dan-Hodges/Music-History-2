@@ -1,0 +1,44 @@
+{
+  "songs": [
+    {
+    "title": "Legs",
+    "artist": "ZZ Top",
+    "album": "Eliminator"
+    },
+    {
+    "title": "Logical Song",
+    "artist": "Supertramp",
+    "album": "Breakfast in America"
+    },
+    {
+    "title": "Another Brick in the Wall",
+    "artist": "Pink Floyd",
+    "album": "The Wall"
+    },
+    {
+    "title":"Welcome to the Jungle",
+    "artist": "Guns and Roses",
+    "album": "Appetite for Destruction"
+    },
+    {
+    "title": "Ironic",
+    "artist": "Alanis Morisette",
+    "album": "Jagged Little Pill"
+    },
+    {
+    "title": "Ironic",
+    "artist": "Alanis Morisette",
+    "album": "Jagged Little Pill"
+    },
+    {
+    "title": "Ironic",
+    "artist": "Alanis Morisette",
+    "album": "Jagged Little Pill"
+    },
+    {
+    "title": "Walk On",
+    "artist": "Neil Young",
+    "album": "On the Beach"
+    }
+  ]
+}  
