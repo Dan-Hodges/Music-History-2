@@ -34,17 +34,17 @@ requirejs(["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-mo
   });
 
   $(document).ready(function() {
-      var s = $("#sticker");
-      var pos = s.position();  
-      console.log("I Work says mr scroll function");                  
-      $(window).scroll(function() {
-          var windowpos = $(window).scrollTop();
-          if (windowpos >= pos.top) {
-              s.addClass("stick");
-          } else {
-              s.removeClass("stick"); 
-          }
-      });
+    var s = $("#sticker");
+    var pos = s.position();  
+    console.log("I Work says mr scroll function");                  
+    $(window).scroll(function() {
+      var windowpos = $(window).scrollTop();
+      if (windowpos >= pos.top) {
+        s.addClass("stick");
+      } else {
+        s.removeClass("stick"); 
+      }
+    });
   });
 
 });

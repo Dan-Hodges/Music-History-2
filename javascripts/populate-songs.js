@@ -1,6 +1,6 @@
 define(function() {
   return {
-    getSongs: function(inputFunc, sentDom) {
+    getSongs: function(inputFunc) {
       $.ajax({
         url: "data/ajaxtext.json"
       }).done(function(data) {
