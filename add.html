@@ -20,15 +20,14 @@
     </div>
   </nav> <!--Nav Section Close-->
 
-  <div class="container-fluid"> <!--Opening div that will house the two main boxes-->
-  
-    <div class="row-eq-height">
+  <div class="container-fluid"> <!--Fluid container  . . . Opening div that will house the two main boxes-->
+    <div class="row-eq-height"><!--Opening div for the row--> 
 
       <div class="col-md-3 col-sm-12"> <!--Opening div for the filter box--> 
         <p class="spaceholder"> here is my text and it extends</p>
         <div id="sticker"> <!--Opening div for sliders and dropdowns--> 
 
-          <div id="dropdowndiv"><!--Opening div for dropdowndiv--> 
+          <div class="dropdowndiv"><!--Opening div for dropdowndiv--> 
           </div><!--Closing div for dropdowndiv-->     
 
           <p class="genre">Genre</li> 
@@ -59,19 +58,38 @@
 
       <div class="col-md-9 col-sm-12"><!--/////Yellow Box Starts/////-->
         <div class="main">
-          <div id="song1"></div>
-          <!-- <div><button type="button" id="more">More Songs</button></div> -->
+
+          <div><!--/////Form Field Starts/////-->
+            <h2>Add a Song</h2>
+            <div class="input-group input-group-lg">
+               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-music" aria-hidden="true"></span></span>
+               <input id="songName" type="text" class="form-control" placeholder="Song Title" aria-describedby="sizing-addon1">
+            </div>
+            <br>
+            <div class="input-group input-group-lg">
+               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+               <input id="artistName" type="text" class="form-control" placeholder="Artist" aria-describedby="sizing-addon1">
+            </div>
+            <br>
+            <div class="input-group input-group-lg">
+               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-record" aria-hidden="true"></span></span>
+               <input id="albumName" type="text" class="form-control" placeholder="Album" aria-describedby="sizing-addon1">
+            </div>
+          </div><!--/////Form Field Stops/////-->
+          <br>
+          <div>
+            <button type="button" id="addSong">Add</button> 
+          </div>
         </div> 
-        <p class="spaceholder"> here is my text and it extends</p>
+        <p class="spaceholder"> here is my text and it extends </p>
       </div><!--closing div for the yellow box--> 
-    
     </div><!--Closing div for the row-->  
   </div><!--Closing div for the fluid container-->  
 
   <!-- //////////// links ///////////// -->
   
   <script data-main="javascripts/main" src="./bower_components/requirejs/require.js"></script>
-  <script src="javascripts/scroll.js"</script>
+  <!--<script src="javascripts/scroll.js"</script>-->
 
 </body>
 </html>  
