@@ -5,7 +5,10 @@ requirejs.config({
     'firebase' : '../bower_components/firebase/firebase',
     'hbs' : '../bower_components/require-handlebars-plugin/hbs',
     'bootstrap' : '../bower_components/bootstrap/dist/js/bootstrap.min',
-    'lodash' : '../bower_components/lodash/lodash.min'
+    'lodash' : '../bower_components/lodash/lodash.min',
+    'q' : '../bower_components/q/q',
+    'es6': '../bower_components/requirejs-babel/es6',
+    'babel': '../bower_components/requirejs-babel/babel-5.8.22.min'
   },
   shim: {
     'bootstrap': ['jquery'],
@@ -17,98 +20,30 @@ requirejs.config({
 });
 
 requirejs(
-  ["firebase", "jquery","lodash", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs", "add", "filterArtist"],
-  function(_firebase, $, _, Handlebars, bootstrap, dom, populate, more, addSong, filterArtist) {
+  ["es6!dependencies", "dom-access", "core-data",
+   "populate-songs", "get-more-songs", "add", "filterArtist", "delete", "authentication"],
+  function(dom, core,
+   populate, more, addSong, filterArtist, deleter, auth) {
 
   var myFirebaseRef = new Firebase('https://blistering-torch-3779.firebaseio.com');
-  allSongObject = {};
-  allSongsArray = [];
-  myFirebaseRef.child("songs").on("value", function(snapshot) {
-    allSongObject = snapshot.val();
-    // Convert Firebase's object of objects into an array of objects
-    for (var key in allSongObject) {
-      allSongsArray[allSongsArray.length] = allSongObject[key];
-    }
-    require(['hbs!../templates/songs'], function(template) {
-      populatedTemplate = template(allSongsArray);
-      //console.log("template(allSongsArray) : " + template(allSongsArray));
-      dom.getOutputSection().html(populatedTemplate);
-    });
-  });
+  var authData = myFirebaseRef.getAuth();
+  console.log("authData :", authData);
 
-  
-  //// song adding machine /////
-  $("#addSong").click(function() {
-    var newSong = {
-    "title": $("#songName").val(),
-    "artist": $("#artistName").val(),
-    "album": $("#albumName").val(),
-    };
-    addSong.add(newSong);
-    $("#songName").val('');
-    $("#artistName").val('');
-    $("#albumName").val('');
-  });
 
-  
-   //// Filter item dropdowns /////  
-  populate.getSongs(function(filterObject) {
-    allSongObject = filterObject;
-    require(['hbs!../templates/filter'], function(template) {
-      var populatedTemplate2 = template(filterObject);
-      $("#dropdowndiv").html(populatedTemplate2);
-    });
-  });
+  var ref = new Firebase("https://blistering-torch-3779.firebaseio.com");
 
-  ///// filtering machine //////
-  var selectedArtist = '', selectedAlbum = '';
-
-  $(document).on('click', '.dropdown-menu li a#artist', function () {
-    selectedArtist = $(this).text();
-    selectedAlbum = '';
-    console.log("selectedArtist", selectedArtist);
-  });
-
-  $(document).on('click', '.dropdown-menu li a#album', function () {
-    selectedAlbum = $(this).text();
-    console.log("selectedAlbum", selectedAlbum);
-  });
-
-  var filteredAlbums = [];
-  $(document).on('click', '#subbutton', function () {
-    console.log("you clicked filter. " + "Your artist is : " + selectedArtist + " and your selected album is : " + selectedAlbum);
-    // allSongObject
-    for (var i = 0; i < allSongsArray.length; i++) {
-      if (allSongsArray[i].artist === selectedArtist) {
-        filteredAlbums.push(allSongsArray[i]);
-      }
-    }
-    require(['hbs!../templates/songs'], function(template) {
-      var populatedTemplate = template(filteredAlbums);
-      dom.getOutputSection().html(populatedTemplate);
-    });
-  });
-  
-  $(document).on("click", '#delete', function() {
-    var deleteTitle = $(this).siblings('h2').text();
-    var titleKey = '';
-    console.log('deleteTitle', deleteTitle);
-    titleKey = _.findKey(allSongObject, { 'title': deleteTitle });  // will absolutely not work, lol ///
-    console.log(titleKey);
-  });
-
-  //// scrolling div machine /////
-  $(document).ready(function() {
-    var s = $("#sticker");
-    var pos = s.position();  
-    console.log("I Work says mr scroll function");                  
-    $(window).scroll(function() {
-      var windowpos = $(window).scrollTop();
-      if (windowpos >= pos.top) {
-        s.addClass("stick");
+  if (authData === null) {
+    ref.authWithOAuthPopup("github", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
       } else {
-        s.removeClass("stick"); 
+        console.log("Authenticated successfully with payload:", authData);
+        auth.setUid(authData.uid);
+        require(["core-data"], function(){});
       }
     });
-  });
+  } 
+  else {
+    auth.setUid(authData.uid);
+  }  
 });

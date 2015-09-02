@@ -1,13 +1,8 @@
-// define(function() {
-//   return {
-//     add: function(argument) {
-//       $.ajax({
-// 			  url: "https://blistering-torch-3779.firebaseio.com/songs.json",
-// 			  method: "DELETE",
-// 			  data: JSON.stringify(argument)
-// 		  }).done(function(newSong){
-// 	      console.log("newSong", JSON.stringify(argument));
-// 			});
-//     }
-//   };
-// });
+define(["firebase"],function(_firebase) {
+  return {
+    delete: function(argument) {
+      var ref = new Firebase("https://blistering-torch-3779.firebaseio.com" + argument);
+      ref.remove();
+    }
+  };
+});
